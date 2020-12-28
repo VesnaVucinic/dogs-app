@@ -9,12 +9,14 @@ import React from 'react'
 //     )
 // }
 
-const DogCard = (props) => {
+// anonymus function expression/ standard exp.
+const DogCard = function(props) {
     console.log(props)
     return (
-        <div>
-            <img src={props.dog.url} alt=""/>
+        <div className="DogCard">
+            <img src={props.dog.url} hight="100px" width="100px" alt={props.dog.name}/>
             <p>{props.dog.name}</p>
+            <br/><br/>
         </div>
     )
 }
