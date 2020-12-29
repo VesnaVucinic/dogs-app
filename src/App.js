@@ -1,8 +1,7 @@
 import React, { Component }  from 'react';
 import './App.css';
 import dogs from './dogs-data'
-import FavouriteToday from './components/FavouriteToday'
-import ForSomeOtherDay from './components/ForSomeOtherDay'
+import Dogs from './components/Dogs'
 import CenterContainer from './components/CenterContainer'
 class App extends Component {
   constructor() {
@@ -35,7 +34,8 @@ class App extends Component {
         // console.log("dog id is", dog.id)
       // console.log(dog.id === event.target.id) strictly equal will give all folse
         // console.log(dog.id == event.target.id)
-        if(dog.id == event.target.id || dog.id == event.target.className) {
+        //  parseInt() function parses a string and returns an integer
+        if(parseInt(dog.id) == parseInt(event.target.id) || dog.id == event.target.className) {
         // we should not be using the deract assigment without making a copy with Object.assign and the assign new value for dog.status and return newDog
             const newDog = Object.assign({}, dog)
             newDog.status = newStatus
@@ -46,21 +46,24 @@ class App extends Component {
         })
         this.setState({
         dogs: dogs
-        }, ()=>console.log(this.state.dogs))
+        })
+        // , ()=>console.log(this.state.dogs)
   }
-
-
 
   render () {
 
         return (
           <div className="App">
-            <FavouriteToday dogs={this.state.dogs.filter(dog => dog.status === "Favourite Today")}/>
+            <Dogs 
+                handleChangeOfHeart={this.handleFavouriteTodayClick}
+                dogs={this.state.dogs.filter(dog => dog.status === "Favourite Today")}/>
             <CenterContainer 
-              handleFavouriteTodayClick={this.handleFavouriteTodayClick}
-            //   handleForSomeOtherDayClick={this.handleForSomeOtherDayClick}
-              dogs={this.state.dogs.filter(dog => dog.status === "undecided")}/>
-            <ForSomeOtherDay handleChangeOfHeart={this.handleFavouriteTodayClick} dogs={this.state.dogs.filter(dog => dog.status === "For Some Other Day")}/>
+                handleFavouriteTodayClick={this.handleFavouriteTodayClick}
+                dogs={this.state.dogs.filter(dog => dog.status === "undecided")}/>
+           <Dogs 
+                forSomeOtherDay={true}
+                handleChangeOfHeart={this.handleFavouriteTodayClick}
+                dogs={this.state.dogs.filter(dog => dog.status === "For Some Other Day")}/>
           </div> 
         )
   }
