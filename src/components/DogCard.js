@@ -1,23 +1,28 @@
 import React from 'react'
 
-// const DogCard = ({ dog }) => {
-//     return (
-//         <div>
-//             <img src={dog.url} alt=""/>
-//             <p>{dog.name}</p>
-//         </div>
-//     )
-// }
-
 // anonymus function expression/ standard exp.
-const DogCard = function(props) {
-    console.log(props)
+const DogCard = function({ dog, handleChangeOfHeart }) {
+    // log I should see twice: once for initial rendering, other for arry of dogs
+    // console.log("dog is", dog) 
+    let returnVal
+    if (dog){
+        returnVal =  <div className="DogCard">
+            {/* className={dog.id} becouse I can't have sane id on diferent elements like id={dog.id}*/}
+                        <img 
+                            className={dog.id} 
+                            onClick={handleChangeOfHeart}  
+                            src={dog.url} hight="100px" width="100px" 
+                            alt={dog.name}/>
+                        <p>{dog.name}</p>
+                        <br/><br/>
+                     </div> 
+    } else {
+        returnVal = <div className="DogCard">
+                        "LOADING..."
+                    </div>
+    }
     return (
-        <div className="DogCard">
-            <img src={props.dog.url} hight="100px" width="100px" alt={props.dog.name}/>
-            <p>{props.dog.name}</p>
-            <br/><br/>
-        </div>
+        returnVal
     )
 }
 
