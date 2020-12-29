@@ -18,7 +18,7 @@ const DogCard = function({ dog, handleChangeOfHeart }) {
                      </div> 
     } else {
         returnVal = <div className="DogCard">
-                        "LOADING..."
+                        EMPTY or LOADING...
                     </div>
     }
     return (
