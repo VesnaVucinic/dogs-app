@@ -26,5 +26,8 @@ Container vs Presentational component
 -Presentational components take props and show them -usually these are functional components
 
 JSX
--a new syntaxthat React has given us to write XML(HTML)/component/JS code quickly
+-a new syntaxthat React has given us to wriste XML(HTML)/component/JS code quicklys
+// XML is markdown language where I can choose tag whatever I want
 <SomeComponent props={theProps}/>
+<h1>Hello</h1>
+{// curly brackets indicate code here is executed as JS}
